@@ -1,0 +1,149 @@
+package com.xwin.pojo;
+
+import lombok.Data;
+
+import javax.persistence.*;
+import java.io.Serializable;
+
+@Data
+@Entity
+@Table(name = "abbreviation")
+public class Abbreviation  implements Serializable {
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long id;
+
+	@Column(name = "user_id")
+	private Long userId;
+
+	@Column(name = "abbr_name")
+	private String abbrName;
+
+	@Column(name = "full_name")
+	private String fullName;
+
+	private String content;
+
+	@Column(name = "image_id")
+	private Long imageId;
+
+	@Column(name = "data_status")
+	private Long dataStatus;
+
+	@Column(name = "create_time")
+	private String createTime;
+
+	@Column(name = "create_by")
+	private Long createBy;
+
+	@Column(name = "last_update_time")
+	private String lastUpdateTime;
+
+	private Long type;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
+	public String getAbbrName() {
+		return abbrName;
+	}
+
+	public void setAbbrName(String abbrName) {
+		this.abbrName = abbrName;
+	}
+
+	public String getFullName() {
+		return fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public Long getImageId() {
+		return imageId;
+	}
+
+	public void setImageId(Long imageId) {
+		this.imageId = imageId;
+	}
+
+	public Long getDataStatus() {
+		return dataStatus;
+	}
+
+	public void setDataStatus(Long dataStatus) {
+		this.dataStatus = dataStatus;
+	}
+
+	public String getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
+	}
+
+	public Long getCreateBy() {
+		return createBy;
+	}
+
+	public void setCreateBy(Long createBy) {
+		this.createBy = createBy;
+	}
+
+	public String getLastUpdateTime() {
+		return lastUpdateTime;
+	}
+
+	public void setLastUpdateTime(String lastUpdateTime) {
+		this.lastUpdateTime = lastUpdateTime;
+	}
+
+	public Long getType() {
+		return type;
+	}
+
+	public void setType(Long type) {
+		this.type = type;
+	}
+
+	@Override
+	public String toString() {
+		return "Abbreviation{" +
+				"id=" + id +
+				", userId=" + userId +
+				", abbrName='" + abbrName + '\'' +
+				", fullName='" + fullName + '\'' +
+				", content='" + content + '\'' +
+				", imageId=" + imageId +
+				", dataStatus=" + dataStatus +
+				", createTime='" + createTime + '\'' +
+				", createBy=" + createBy +
+				", lastUpdateTime='" + lastUpdateTime + '\'' +
+				", type=" + type +
+				'}';
+	}
+}
