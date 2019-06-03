@@ -1,9 +1,11 @@
 package com.xwin.pojo;
 
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Data
 @Entity
@@ -11,7 +13,8 @@ import java.io.Serializable;
 public class Post  implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(generator = "system-uuid")
+	@GenericGenerator(name = "system-uuid", strategy = "uuid")
 	private Long id;
 
 	@Column(name = "user_id")
@@ -27,10 +30,10 @@ public class Post  implements Serializable {
 	private Long dataStatus;
 
 	@Column(name = "create_time")
-	private String createTime;
+	private java.util.Date createTime;
 
 	@Column(name = "last_update_time")
-	private String lastUpdateTime;
+	private java.util.Date lastUpdateTime;
 
 	public Long getId() {
 		return id;
@@ -80,19 +83,19 @@ public class Post  implements Serializable {
 		this.dataStatus = dataStatus;
 	}
 
-	public String getCreateTime() {
+	public Date getCreateTime() {
 		return createTime;
 	}
 
-	public void setCreateTime(String createTime) {
+	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
 
-	public String getLastUpdateTime() {
+	public Date getLastUpdateTime() {
 		return lastUpdateTime;
 	}
 
-	public void setLastUpdateTime(String lastUpdateTime) {
+	public void setLastUpdateTime(Date lastUpdateTime) {
 		this.lastUpdateTime = lastUpdateTime;
 	}
 
@@ -105,8 +108,8 @@ public class Post  implements Serializable {
 				", content='" + content + '\'' +
 				", type=" + type +
 				", dataStatus=" + dataStatus +
-				", createTime='" + createTime + '\'' +
-				", lastUpdateTime='" + lastUpdateTime + '\'' +
+				", createTime=" + createTime +
+				", lastUpdateTime=" + lastUpdateTime +
 				'}';
 	}
 }

@@ -2,8 +2,6 @@ package com.xwin.service;
 
 import com.xwin.pojo.User;
 
-import java.util.Map;
-
 public interface UserService {
 
     public String getPhoneMessage(String phoneNumber);

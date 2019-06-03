@@ -5,6 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Data
 @Entity
@@ -21,7 +22,7 @@ public class User  implements Serializable {
 	private String nickname;
 
 	@Column(name = "role_id")
-	private Long roleid;
+	private Long roleId;
 
 	private Long point;
 
@@ -38,18 +39,18 @@ public class User  implements Serializable {
 	private Long verificationCode;
 
 	@Column(name = "create_time")
-	private String createTime;
+	private java.util.Date createTime;
 
 	@Column(name = "data_status")
 	private Long dataStatus;
 
 	@Column(name = "last_update_time")
-	private String lastUpdateTime;
+	private java.util.Date lastUpdateTime;
 
 	private String token;
 
 	@Column(name = "last_login_time")
-	private String lastLoginTime;
+	private java.util.Date lastLoginTime;
 
 	@Column(name = "last_login_ip")
 	private String lastLoginIp;
@@ -78,12 +79,12 @@ public class User  implements Serializable {
 		this.nickname = nickname;
 	}
 
-	public Long getRoleid() {
-		return roleid;
+	public Long getRoleId() {
+		return roleId;
 	}
 
-	public void setRoleid(Long roleid) {
-		this.roleid = roleid;
+	public void setRoleId(Long roleId) {
+		this.roleId = roleId;
 	}
 
 	public Long getPoint() {
@@ -134,11 +135,11 @@ public class User  implements Serializable {
 		this.verificationCode = verificationCode;
 	}
 
-	public String getCreateTime() {
+	public Date getCreateTime() {
 		return createTime;
 	}
 
-	public void setCreateTime(String createTime) {
+	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
 
@@ -150,11 +151,11 @@ public class User  implements Serializable {
 		this.dataStatus = dataStatus;
 	}
 
-	public String getLastUpdateTime() {
+	public Date getLastUpdateTime() {
 		return lastUpdateTime;
 	}
 
-	public void setLastUpdateTime(String lastUpdateTime) {
+	public void setLastUpdateTime(Date lastUpdateTime) {
 		this.lastUpdateTime = lastUpdateTime;
 	}
 
@@ -166,11 +167,11 @@ public class User  implements Serializable {
 		this.token = token;
 	}
 
-	public String getLastLoginTime() {
+	public Date getLastLoginTime() {
 		return lastLoginTime;
 	}
 
-	public void setLastLoginTime(String lastLoginTime) {
+	public void setLastLoginTime(Date lastLoginTime) {
 		this.lastLoginTime = lastLoginTime;
 	}
 
@@ -185,21 +186,21 @@ public class User  implements Serializable {
 	@Override
 	public String toString() {
 		return "User{" +
-				"id=" + id +
+				"id='" + id + '\'' +
 				", username='" + username + '\'' +
 				", nickname='" + nickname + '\'' +
-				", roleid=" + roleid +
+				", roleId=" + roleId +
 				", point=" + point +
 				", avatarUrl='" + avatarUrl + '\'' +
 				", gender=" + gender +
 				", region='" + region + '\'' +
 				", profile='" + profile + '\'' +
 				", verificationCode=" + verificationCode +
-				", createTime='" + createTime + '\'' +
+				", createTime=" + createTime +
 				", dataStatus=" + dataStatus +
-				", lastUpdateTime='" + lastUpdateTime + '\'' +
+				", lastUpdateTime=" + lastUpdateTime +
 				", token='" + token + '\'' +
-				", lastLoginTime='" + lastLoginTime + '\'' +
+				", lastLoginTime=" + lastLoginTime +
 				", lastLoginIp='" + lastLoginIp + '\'' +
 				'}';
 	}

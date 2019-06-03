@@ -1,17 +1,15 @@
 package com.xwin.service.serviceImpl;
 
 import com.xwin.common.GetPhoneMessage;
-import com.xwin.common.utils.DateUtils;
 import com.xwin.dao.daoImpl.UserDao;
 import com.xwin.pojo.User;
 import com.xwin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -40,8 +38,9 @@ public class UserServiceImpl implements UserService {
     }
 
     public User insertUser(User user){
-        user.setLastLoginTime(DateUtils.getFormatStringByDFyyMMddHHmmssSSS(new Date()));
-        user.setCreateTime(DateUtils.getFormatStringByDFyyMMddHHmmssSSS(new Date()));
+
+        user.setLastLoginTime(new Date());
+        user.setCreateTime(new Date());
         List<User> userList=userDao.findAll();
         User loginUser=new User();
 
@@ -52,6 +51,10 @@ public class UserServiceImpl implements UserService {
             }else{
                 loginUser=userList.get(i);
             }
+        }
+        if(userList.size()==0){
+            userDao.save(user);
+            loginUser=user;
         }
         return loginUser;
     }

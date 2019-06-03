@@ -1,6 +1,7 @@
 package com.xwin.pojo;
 
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,7 +12,8 @@ import java.io.Serializable;
 public class HotSearch  implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(generator = "system-uuid")
+	@GenericGenerator(name = "system-uuid", strategy = "uuid")
 	private Long id;
 
 	private Long count;

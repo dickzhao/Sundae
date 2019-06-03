@@ -1,20 +1,29 @@
 package com.xwin.service.serviceImpl;
 
+import com.xwin.common.utils.DateUtils;
 import com.xwin.common.utils.FtpUtil;
 import com.xwin.common.utils.IDUtils;
+import com.xwin.dao.daoImpl.PictureDao;
+import com.xwin.pojo.Image;
 import com.xwin.service.PictureService;
 
 import org.joda.time.DateTime;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
 public class PictureServiceImpl implements PictureService {
-	
+
+	@Autowired
+	private PictureDao pictureDao;
+
 	@Value("${FTP_ADDRESS}")
 	private String FTP_ADDRESS;
 	@Value("${FTP_PORT}")
@@ -57,6 +66,13 @@ public class PictureServiceImpl implements PictureService {
 			resultMap.put("message", "文件上传发生异常");
 			return resultMap;
 		}
+	}
+
+	@Override
+	public List<Image> getAllImagesByType(long type) {
+		Date weekBeginTime=DateUtils.getBeginDayOfWeek();
+		Date weekEndTime=DateUtils.getEndDayOfWeek();
+		return pictureDao.findAllByType(type,weekBeginTime,weekEndTime);
 	}
 
 }
