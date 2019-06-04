@@ -18,7 +18,7 @@ public class ImageController {
     private PictureService pictureService;
 
     //图片上传方法
-    @RequestMapping(value = "/upload/img")
+    @RequestMapping(value = "/upload/img",method = RequestMethod.POST)
     @ResponseBody
     public String updateImage(@PathVariable MultipartFile uploadFile){
         Map result=pictureService.uploadPicture(uploadFile);

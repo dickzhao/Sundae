@@ -36,7 +36,8 @@ public class BannerNews  implements Serializable {
 
 	private String sequence;
 
-	private Image image;
+	@Transient
+	private  Image image;
 
 	public Long getId() {
 		return id;

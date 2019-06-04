@@ -4,6 +4,9 @@ import com.xwin.common.utils.RetCode;
 import com.xwin.common.utils.ReturnResult;
 import com.xwin.pojo.User;
 import com.xwin.service.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +21,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/user")
+@Api("Sundae相关的User Api")
 public class UserController {
 
     @Autowired
@@ -26,6 +30,8 @@ public class UserController {
     public String sendRandNum;
     private String phone;
 
+    @ApiOperation(value = "发送手机号获取验证码", notes = "发送手机号获取验证码1")
+    @ApiImplicitParam(name = "phoneNumber", value = "手机号", paramType = "path", required = true, dataType = "String")
     @RequestMapping(value = "/getPhoneMessage/{phoneNumber}",method = RequestMethod.POST)
     public String getPhoneMessage(@PathVariable() String phoneNumber ){
         sendRandNum= GetPhoneMessage.randNum;
@@ -53,10 +59,4 @@ public class UserController {
         }
     }
 
-
-    @RequestMapping("/")
-    public String index(Model model, HttpServletResponse response) {
-        model.addAttribute("name", "simonsfan");
-        return "/index";
-    }
 }

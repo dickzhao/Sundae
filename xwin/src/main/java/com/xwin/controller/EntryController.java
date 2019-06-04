@@ -14,7 +14,7 @@ public class EntryController {
     @Autowired
     private EntryService entryService;
 
-    @RequestMapping(value = "/getHotNews",method = RequestMethod.GET)
+    @RequestMapping(value = "/getHotEntry",method = RequestMethod.GET)
     public ReturnResult getHotNews(){
         entryService.getHotNews();
         return null;

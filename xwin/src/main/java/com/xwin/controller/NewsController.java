@@ -32,7 +32,6 @@ public class NewsController {
         Map resultMap=new HashMap<Object,Object>();
         ArrayList list = new ArrayList<>();
         for(int i=0;i<newsList.size();i++){
-
             for (int j=0;j<imageList.size();j++){
                 if(newsList.get(i).getImageId()==imageList.get(j).getId()){
                     Image image=new Image();
@@ -41,10 +40,8 @@ public class NewsController {
                     break;
                 }
             }
-
-             //   ReturnResult.ok(resultMap1);
+            list.add(newsList.get(i));
         }
-
         return ReturnResult.build(200,"success",list);
     }
 }
