@@ -75,4 +75,10 @@ public class PictureServiceImpl implements PictureService {
 		return pictureDao.findAllByType(type,weekBeginTime,weekEndTime);
 	}
 
+	@Override
+	public Image getImageById(String entryId) {
+
+		return pictureDao.getImageById(entryId);
+	}
+
 }

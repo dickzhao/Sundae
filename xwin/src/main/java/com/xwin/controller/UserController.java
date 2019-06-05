@@ -2,6 +2,7 @@ package com.xwin.controller;
 
 import com.xwin.common.utils.RetCode;
 import com.xwin.common.utils.ReturnResult;
+import com.xwin.pojo.Login;
 import com.xwin.pojo.User;
 import com.xwin.service.UserService;
 import io.swagger.annotations.Api;
@@ -26,31 +27,27 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
-    public String sendRandNum;
-    private String phone;
+    Login loginInfo=new Login();
 
     @ApiOperation(value = "发送手机号获取验证码", notes = "发送手机号获取验证码1")
     @ApiImplicitParam(name = "phoneNumber", value = "手机号", paramType = "path", required = true, dataType = "String")
     @RequestMapping(value = "/getPhoneMessage/{phoneNumber}",method = RequestMethod.POST)
     public String getPhoneMessage(@PathVariable() String phoneNumber ){
-        sendRandNum= GetPhoneMessage.randNum;
+
+        loginInfo.setSendRandNum(GetPhoneMessage.randNum);
         //sendRandNum= userService.getPhoneMessage(phoneNumber);
-        phone=phoneNumber;
-        return sendRandNum;
+        loginInfo.setPhoneNumber(phoneNumber);
+        return loginInfo.getSendRandNum();
     }
 
     @RequestMapping(value = "/login/{identifyingCode}",method = RequestMethod.POST)
-    public ReturnResult userLogin(@PathVariable String identifyingCode){
-        Map resultMap = new HashMap<Object, Object>();
-        Map resultMap1 = new HashMap<Object, Object>();
-        Boolean loginAction=userService.userLogin(identifyingCode,sendRandNum);
+    public ReturnResult userLogin(@PathVariable String identifyingCode,String phoneNum){
+        Boolean loginAction=userService.userLogin(identifyingCode,phoneNum,loginInfo);
         System.out.println(loginAction);
-
         if(loginAction){
             User user=new User();
-            user.setUsername(phone);
-            user.setNickname(phone);
+            user.setUsername(loginInfo.getPhoneNumber());
+            user.setNickname(loginInfo.getPhoneNumber());
             user=userService.insertUser(user);
 
             return ReturnResult.build(RetCode.SUCCESS,"success",user);
@@ -58,5 +55,6 @@ public class UserController {
             return ReturnResult.build(RetCode.FAIL,"failure",null);
         }
     }
+
 
 }

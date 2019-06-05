@@ -15,10 +15,10 @@ public class Abbreviation  implements Serializable {
 	@Id
 	@GeneratedValue(generator = "system-uuid")
 	@GenericGenerator(name = "system-uuid", strategy = "uuid")
-	private Long id;
+	private String id;
 
 	@Column(name = "user_id")
-	private Long userId;
+	private String userId;
 
 	@Column(name = "abbr_name")
 	private String abbrName;
@@ -29,7 +29,7 @@ public class Abbreviation  implements Serializable {
 	private String content;
 
 	@Column(name = "image_id")
-	private Long imageId;
+	private String imageId;
 
 	@Column(name = "data_status")
 	private Long dataStatus;
@@ -38,26 +38,29 @@ public class Abbreviation  implements Serializable {
 	private java.util.Date createTime;
 
 	@Column(name = "create_by")
-	private Long createBy;
+	private String createBy;
 
 	@Column(name = "last_update_time")
 	private java.util.Date lastUpdateTime;
 
 	private Long type;
 
-	public Long getId() {
+	@Transient
+	private Image image;
+
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
-	public Long getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Long userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
@@ -85,11 +88,11 @@ public class Abbreviation  implements Serializable {
 		this.content = content;
 	}
 
-	public Long getImageId() {
+	public String getImageId() {
 		return imageId;
 	}
 
-	public void setImageId(Long imageId) {
+	public void setImageId(String imageId) {
 		this.imageId = imageId;
 	}
 
@@ -109,11 +112,11 @@ public class Abbreviation  implements Serializable {
 		this.createTime = createTime;
 	}
 
-	public Long getCreateBy() {
+	public String getCreateBy() {
 		return createBy;
 	}
 
-	public void setCreateBy(Long createBy) {
+	public void setCreateBy(String createBy) {
 		this.createBy = createBy;
 	}
 
@@ -133,20 +136,29 @@ public class Abbreviation  implements Serializable {
 		this.type = type;
 	}
 
+	public Image getImage() {
+		return image;
+	}
+
+	public void setImage(Image image) {
+		this.image = image;
+	}
+
 	@Override
 	public String toString() {
 		return "Abbreviation{" +
-				"id=" + id +
-				", userId=" + userId +
+				"id='" + id + '\'' +
+				", userId='" + userId + '\'' +
 				", abbrName='" + abbrName + '\'' +
 				", fullName='" + fullName + '\'' +
 				", content='" + content + '\'' +
-				", imageId=" + imageId +
+				", imageId='" + imageId + '\'' +
 				", dataStatus=" + dataStatus +
 				", createTime=" + createTime +
-				", createBy=" + createBy +
+				", createBy='" + createBy + '\'' +
 				", lastUpdateTime=" + lastUpdateTime +
 				", type=" + type +
+				", image=" + image +
 				'}';
 	}
 }

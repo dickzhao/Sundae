@@ -15,10 +15,10 @@ public class Message  implements Serializable {
 	@Id
 	@GeneratedValue(generator = "system-uuid")
 	@GenericGenerator(name = "system-uuid", strategy = "uuid")
-	private Long id;
+	private String id;
 
 	@Column(name = "user_id")
-	private Long userId;
+	private String userId;
 
 	private String content;
 
@@ -36,19 +36,19 @@ public class Message  implements Serializable {
 	@Column(name = "last_update_time")
 	private java.util.Date lastUpdateTime;
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
-	public Long getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Long userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
@@ -103,8 +103,8 @@ public class Message  implements Serializable {
 	@Override
 	public String toString() {
 		return "Message{" +
-				"id=" + id +
-				", userId=" + userId +
+				"id='" + id + '\'' +
+				", userId='" + userId + '\'' +
 				", content='" + content + '\'' +
 				", type=" + type +
 				", readFlag=" + readFlag +

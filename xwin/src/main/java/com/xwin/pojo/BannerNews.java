@@ -15,12 +15,12 @@ public class BannerNews  implements Serializable {
 	@Id
 	@GeneratedValue(generator = "system-uuid")
 	@GenericGenerator(name = "system-uuid", strategy = "uuid")
-	private Long id;
+	private String id;
 
 	private String title;
 
 	@Column(name = "image_id")
-	private Long imageId;
+	private String imageId;
 
 	@Column(name = "html_url")
 	private String htmlUrl;
@@ -37,13 +37,21 @@ public class BannerNews  implements Serializable {
 	private String sequence;
 
 	@Transient
-	private  Image image;
+	private Image image;
 
-	public Long getId() {
+	public Image getImage() {
+		return image;
+	}
+
+	public void setImage(Image image) {
+		this.image = image;
+	}
+
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -55,11 +63,11 @@ public class BannerNews  implements Serializable {
 		this.title = title;
 	}
 
-	public Long getImageId() {
+	public String getImageId() {
 		return imageId;
 	}
 
-	public void setImageId(Long imageId) {
+	public void setImageId(String imageId) {
 		this.imageId = imageId;
 	}
 
@@ -103,20 +111,12 @@ public class BannerNews  implements Serializable {
 		this.sequence = sequence;
 	}
 
-	public Image getImage() {
-		return image;
-	}
-
-	public void setImage(Image image) {
-		this.image = image;
-	}
-
 	@Override
 	public String toString() {
 		return "BannerNews{" +
-				"id=" + id +
+				"id='" + id + '\'' +
 				", title='" + title + '\'' +
-				", imageId=" + imageId +
+				", imageId='" + imageId + '\'' +
 				", htmlUrl='" + htmlUrl + '\'' +
 				", dataStatus=" + dataStatus +
 				", createTime=" + createTime +
