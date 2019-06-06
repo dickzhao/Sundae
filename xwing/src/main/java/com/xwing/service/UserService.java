@@ -1,7 +1,7 @@
-package com.xwin.service;
+package com.xwing.service;
 
-import com.xwin.pojo.Login;
-import com.xwin.pojo.User;
+import com.xwing.pojo.Login;
+import com.xwing.pojo.User;
 
 public interface UserService {
 
