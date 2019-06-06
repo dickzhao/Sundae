@@ -55,6 +55,9 @@ public class User  implements Serializable {
 	@Column(name = "last_login_ip")
 	private String lastLoginIp;
 
+	@Transient
+	private Image image;
+
 	public String getId() {
 		return id;
 	}
@@ -183,6 +186,14 @@ public class User  implements Serializable {
 		this.lastLoginIp = lastLoginIp;
 	}
 
+	public Image getImage() {
+		return image;
+	}
+
+	public void setImage(Image image) {
+		this.image = image;
+	}
+
 	@Override
 	public String toString() {
 		return "User{" +
@@ -202,6 +213,7 @@ public class User  implements Serializable {
 				", token='" + token + '\'' +
 				", lastLoginTime=" + lastLoginTime +
 				", lastLoginIp='" + lastLoginIp + '\'' +
+				", image=" + image +
 				'}';
 	}
 }

@@ -15,13 +15,13 @@ public class Follow  implements Serializable {
 	@Id
 	@GeneratedValue(generator = "system-uuid")
 	@GenericGenerator(name = "system-uuid", strategy = "uuid")
-	private Long id;
+	private String id;
 
 	@Column(name = "user_id")
-	private Long userId;
+	private String userId;
 
 	@Column(name = "followed_user_id")
-	private Long followedUserId;
+	private String followedUserId;
 
 	@Column(name = "data_status")
 	private Long dataStatus;
@@ -32,27 +32,27 @@ public class Follow  implements Serializable {
 	@Column(name = "last_update_time")
 	private java.util.Date lastUpdateTime;
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
-	public Long getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Long userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
-	public Long getFollowedUserId() {
+	public String getFollowedUserId() {
 		return followedUserId;
 	}
 
-	public void setFollowedUserId(Long followedUserId) {
+	public void setFollowedUserId(String followedUserId) {
 		this.followedUserId = followedUserId;
 	}
 
@@ -83,9 +83,9 @@ public class Follow  implements Serializable {
 	@Override
 	public String toString() {
 		return "Follow{" +
-				"id=" + id +
-				", userId=" + userId +
-				", followedUserId=" + followedUserId +
+				"id='" + id + '\'' +
+				", userId='" + userId + '\'' +
+				", followedUserId='" + followedUserId + '\'' +
 				", dataStatus=" + dataStatus +
 				", createTime=" + createTime +
 				", lastUpdateTime=" + lastUpdateTime +

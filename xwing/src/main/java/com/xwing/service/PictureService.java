@@ -11,4 +11,6 @@ public interface PictureService {
 	Map uploadPicture(MultipartFile uploadFile);
 
 	public List<Image> getAllImagesByType(long type);
+
+    public Image getImageById(String entryId);
 }

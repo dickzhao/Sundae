@@ -33,7 +33,7 @@ public class NewsController {
         ArrayList list = new ArrayList<>();
         for(int i=0;i<newsList.size();i++){
             for (int j=0;j<imageList.size();j++){
-                if(newsList.get(i).getImageId()==imageList.get(j).getId()){
+                if(newsList.get(i).getImageId().equals(imageList.get(j).getId())){
                     Image image=new Image();
                     image=imageList.get(j);
                     newsList.get(i).setImage(image);

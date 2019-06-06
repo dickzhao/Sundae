@@ -1,12 +1,13 @@
-package com.xwing.service;
+package com.xwin.service;
 
-import com.xwing.pojo.User;
+import com.xwin.pojo.Login;
+import com.xwin.pojo.User;
 
 public interface UserService {
 
     public String getPhoneMessage(String phoneNumber);
 
-    public boolean userLogin(String identifyingCode, String sendRandNum);
+    public boolean userLogin(String identifyingCode,String phoneNum,Login loginInfo);
 
     public User insertUser(User user);
 

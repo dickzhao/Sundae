@@ -15,16 +15,16 @@ public class Comment  implements Serializable {
 	@Id
 	@GeneratedValue(generator = "system-uuid")
 	@GenericGenerator(name = "system-uuid", strategy = "uuid")
-	private Long id;
+	private String id;
 
 	@Column(name = "user_id")
-	private Long userId;
+	private String userId;
 
 	@Column(name = "post_id")
-	private Long postId;
+	private String postId;
 
 	@Column(name = "abbreviation_id")
-	private Long abbreviationId;
+	private String abbreviationId;
 
 	private String content;
 
@@ -37,35 +37,35 @@ public class Comment  implements Serializable {
 	@Column(name = "last_update_time")
 	private java.util.Date lastUpdateTime;
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
-	public Long getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Long userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
-	public Long getPostId() {
+	public String getPostId() {
 		return postId;
 	}
 
-	public void setPostId(Long postId) {
+	public void setPostId(String postId) {
 		this.postId = postId;
 	}
 
-	public Long getAbbreviationId() {
+	public String getAbbreviationId() {
 		return abbreviationId;
 	}
 
-	public void setAbbreviationId(Long abbreviationId) {
+	public void setAbbreviationId(String abbreviationId) {
 		this.abbreviationId = abbreviationId;
 	}
 
@@ -104,10 +104,10 @@ public class Comment  implements Serializable {
 	@Override
 	public String toString() {
 		return "Comment{" +
-				"id=" + id +
-				", userId=" + userId +
-				", postId=" + postId +
-				", abbreviationId=" + abbreviationId +
+				"id='" + id + '\'' +
+				", userId='" + userId + '\'' +
+				", postId='" + postId + '\'' +
+				", abbreviationId='" + abbreviationId + '\'' +
 				", content='" + content + '\'' +
 				", dataStatus=" + dataStatus +
 				", createTime=" + createTime +

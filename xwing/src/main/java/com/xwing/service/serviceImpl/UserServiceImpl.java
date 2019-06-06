@@ -1,15 +1,20 @@
-package com.xwing.service.serviceImpl;
+package com.xwin.service.serviceImpl;
 
-import com.xwing.common.GetPhoneMessage;
-import com.xwing.dao.daoImpl.UserDao;
-import com.xwing.pojo.User;
-import com.xwing.service.UserService;
+import com.xwin.common.GetPhoneMessage;
+import com.xwin.common.utils.ObjectUtil;
+import com.xwin.dao.daoImpl.UserDao;
+import com.xwin.pojo.Login;
+import com.xwin.pojo.User;
+import com.xwin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -26,35 +31,35 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean userLogin(String identifyingCode, String sendRandNum) {
-        int randNum=Integer.parseInt(sendRandNum);
-        int code=Integer.parseInt(identifyingCode);
-        System.out.println(randNum+"**"+code);
-        if(randNum==code){
+    public boolean userLogin(String identifyingCode, String phoneNum, Login loginInfo) {
+        int randNum = Integer.parseInt(loginInfo.getSendRandNum());
+        int code = Integer.parseInt(identifyingCode);
+        if (randNum == code && phoneNum.compareTo(loginInfo.getPhoneNumber())==0) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
-    public User insertUser(User user){
-
+    public User insertUser(User user) {
         user.setLastLoginTime(new Date());
         user.setCreateTime(new Date());
-        List<User> userList=userDao.findAll();
-        User loginUser=new User();
-
-        for(int i=0;i<userList.size();i++){
-            if(!userList.get(i).getUsername().equals(user.getUsername())){
+        List<User> userList = userDao.findAll();
+        User loginUser = new User();
+        List usernameList = new ArrayList();
+        if (userList.size() == 0) {
+            userDao.save(user);
+            loginUser = user;
+        }else{
+            for (int i = 0; i < userList.size(); i++) {
+                usernameList.add(userList.get(i).getUsername());
+            }
+            if (usernameList.contains(user.getUsername())) {
+                loginUser=user;
+            } else {
                 userDao.save(user);
                 loginUser=user;
-            }else{
-                loginUser=userList.get(i);
             }
-        }
-        if(userList.size()==0){
-            userDao.save(user);
-            loginUser=user;
         }
         return loginUser;
     }

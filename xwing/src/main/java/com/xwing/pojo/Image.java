@@ -15,13 +15,13 @@ public class Image  implements Serializable {
 	@Id
 	@GeneratedValue(generator = "system-uuid")
 	@GenericGenerator(name = "system-uuid", strategy = "uuid")
-	private Long id;
+	private String id;
 
 	@Column(name = "post_id")
-	private Long postId;
+	private String postId;
 
 	@Column(name = "abbreviation_id")
-	private Long abbreviationId;
+	private String abbreviationId;
 
 	private String path;
 
@@ -40,27 +40,27 @@ public class Image  implements Serializable {
 
 	private Long type;
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
-	public Long getPostId() {
+	public String getPostId() {
 		return postId;
 	}
 
-	public void setPostId(Long postId) {
+	public void setPostId(String postId) {
 		this.postId = postId;
 	}
 
-	public Long getAbbreviationId() {
+	public String getAbbreviationId() {
 		return abbreviationId;
 	}
 
-	public void setAbbreviationId(Long abbreviationId) {
+	public void setAbbreviationId(String abbreviationId) {
 		this.abbreviationId = abbreviationId;
 	}
 
@@ -123,9 +123,9 @@ public class Image  implements Serializable {
 	@Override
 	public String toString() {
 		return "Image{" +
-				"id=" + id +
-				", postId=" + postId +
-				", abbreviationId=" + abbreviationId +
+				"id='" + id + '\'' +
+				", postId='" + postId + '\'' +
+				", abbreviationId='" + abbreviationId + '\'' +
 				", path='" + path + '\'' +
 				", name='" + name + '\'' +
 				", sequence='" + sequence + '\'' +
