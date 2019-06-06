@@ -47,18 +47,22 @@ public class UserServiceImpl implements UserService {
         List<User> userList = userDao.findAll();
         User loginUser = new User();
         List usernameList = new ArrayList();
+        int index=-1;
         if (userList.size() == 0) {
             userDao.save(user);
             loginUser = user;
         }else{
             for (int i = 0; i < userList.size(); i++) {
                 usernameList.add(userList.get(i).getUsername());
+                if(usernameList.contains(user.getUsername())){
+                    index=i;
+                }
             }
-            if (usernameList.contains(user.getUsername())) {
-                loginUser=user;
+            if (index!=-1) {
+                loginUser=userList.get(index);
             } else {
-                userDao.save(user);
-                loginUser=user;
+                User user1=userDao.save(user);
+                loginUser=user1;
             }
         }
         return loginUser;

@@ -7,7 +7,7 @@ package com.xwin.common.utils;
 public class RetCode {
 
 	/** 成功 */
-	public static final int SUCCESS = 0;
+	public static final int SUCCESS = 200;
 
 	/** 请求参数不合法 */
 	public static final int PARAMS_INVALID = 100;
